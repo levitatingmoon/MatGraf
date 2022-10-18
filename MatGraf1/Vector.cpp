@@ -1,5 +1,34 @@
 #include "Vector.h"
 
+Vector::Vector()
+{
+	x = 1;
+	y = 1;
+	z = 1;
+}
+
+Vector::Vector(float x, float y, float z)
+{
+	this->x = x;
+	this->y = y;
+	this->z = z;
+}
+
+Vector::Vector(Vector p1, Vector p2)
+{
+	this->x = p1.x + p2.x;
+	this->y = p1.y + p2.y;
+	this->z = p1.z + p2.z;
+	
+}
+
+Vector::Vector(const Vector& v)
+{
+	this->x = v.x;
+	this->y = v.y;
+	this->z = v.z;
+}
+
 void Vector::operator+=(const Vector& v) {
 	x += v.x;
 	y += v.y;
@@ -44,14 +73,6 @@ void Vector::normalize() {
 	else {
 		std::cout << "Can't divide by 0" << std::endl;
 	}
-}
-
-Vector Vector::dot(Vector v) {
-	Vector result;
-	result.x = this->x * v.x;
-	result.y = this->y * v.y;
-	result.z = this->z * v.z;
-	return result;
 }
 
 float Vector::dotProduct(Vector v) {
