@@ -35,7 +35,8 @@ int main()
 	cout << v9.x << " " << v9.y << " " << v9.z << endl;
 
 	cout << "Normalizacja wektora:" << endl;
+	Vector v10 = v8;
 	v8.normalize();
 	cout << v8.x << " " << v8.y << " " << v8.z << endl;
-	cout << v8.length();
+	cout << v8.length() << endl;
 }

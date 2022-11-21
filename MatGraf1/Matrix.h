@@ -1,4 +1,10 @@
 #pragma once
+#define _USE_MATH_DEFINES
+#include "Vector.h"
+#include <cstdio>
+#include <cmath>
+#include <math.h>
+
 class Matrix
 {
 public:
@@ -13,9 +19,19 @@ public:
 	Matrix operator+(const Matrix &mat);
 	Matrix operator*(const float f);
 	Matrix operator*(const Matrix &mat);
-	void loadIdentity(void);
-	void setMatrixAsInverse(const Matrix& m);
-	Matrix getInverseOfMatrix();
+	void loadIdentity(void); //ok
+	void setMatrixAsInverse(const Matrix& m); //idk
+	Matrix getInverseOfMatrix(); //ok
+	void invertMatrix(); //ok
+	void setMatrixAsTranspose(const Matrix &m); //ok
+	Matrix getTransposeOfMatrix(); //ok
+	void SetTranslationPart(const Vector &translation); //ok
+	void SetScale(const Vector& scaleFactor); //ok
+	void SetUniformScale(const float scaleFactor); //ok
+	void SetRotationAxis(const double angle, Vector &axis); //ok
+	void SetRotationX(const double angle); //ok
+	void SetRotationY(const double angle); //ok
+	void SetRotationZ(const double angle); //ok
 
 };
 
