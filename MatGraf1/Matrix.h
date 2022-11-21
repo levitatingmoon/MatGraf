@@ -1,4 +1,8 @@
 #pragma once
+#include <iostream>
+
+#include <string>
+
 class Matrix
 {
 public:
@@ -13,9 +17,11 @@ public:
 	Matrix operator+(const Matrix &mat);
 	Matrix operator*(const float f);
 	Matrix operator*(const Matrix &mat);
+	float multiplyRowAndColumn(float row[], float column[]);
 	void loadIdentity(void);
 	void setMatrixAsInverse(const Matrix& m);
 	Matrix getInverseOfMatrix();
-
+	
 };
 
+std::ostream& operator<<(std::ostream& strm, const Matrix& mat);

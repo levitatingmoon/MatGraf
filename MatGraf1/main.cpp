@@ -1,6 +1,7 @@
 ﻿#define _USE_MATH_DEFINES
 
 #include "Vector.h"
+#include "Matrix.h"
 #include <cmath>
 #include <math.h>
 
@@ -8,6 +9,7 @@ using namespace std;
 
 int main()
 {
+	/* ------------------ - wektory-----------------------
 	cout << "Sprawdzanie przemiennosci:" << endl;
 	Vector v1(1, 2, 3);
 	Vector v2(4, 5, 6);
@@ -38,4 +40,10 @@ int main()
 	v8.normalize();
 	cout << v8.x << " " << v8.y << " " << v8.z << endl;
 	cout << v8.length();
+	------------------------------------------------------*/
+	Matrix mat1(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+	Matrix mat2(1, 5, 6, 7, 8, 4, 3, 1, 6, 9, 6, 3, 2, 1, 3, 6);
+	Matrix mat3 = mat1 * mat2;
+	cout << mat3;
+
 }
