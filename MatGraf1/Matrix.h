@@ -23,9 +23,6 @@ public:
 	Matrix operator*(const float f);
 	Matrix operator*(const Matrix &mat);
 	float multiplyRowAndColumn(float row[], float column[]);
-	void loadIdentity(void);
-	void setMatrixAsInverse(const Matrix& m);
-	Matrix getInverseOfMatrix();
 	void loadIdentity(void); //ok
 	void setMatrixAsInverse(const Matrix& m); //idk
 	Matrix getInverseOfMatrix(); //ok

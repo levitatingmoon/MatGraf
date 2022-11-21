@@ -138,6 +138,84 @@ void Matrix::loadIdentity(void)
 void Matrix::setMatrixAsInverse(const Matrix& m)
 {
 
+	float a11 = MatrixData[0];
+	float a12 = MatrixData[1];
+	float a13 = MatrixData[2];
+	float a14 = MatrixData[3];
+	float a21 = MatrixData[4];
+	float a22 = MatrixData[5];
+	float a23 = MatrixData[6];
+	float a24 = MatrixData[7];
+	float a31 = MatrixData[8];
+	float a32 = MatrixData[9];
+	float a33 = MatrixData[10];
+	float a34 = MatrixData[11];
+	float a41 = MatrixData[12];
+	float a42 = MatrixData[13];
+	float a43 = MatrixData[14];
+	float a44 = MatrixData[15];
+
+
+	float det = (a11 * a22 * a33 * a44) -
+		(a11 * a22 * a34 * a43) -
+		(a11 * a23 * a32 * a44) +
+		(a11 * a24 * a32 * a43) +
+		(a11 * a23 * a34 * a42) -
+		(a11 * a24 * a33 * a42) -
+		(a12 * a21 * a33 * a44) +
+		(a12 * a21 * a34 * a43) +
+		(a13 * a21 * a32 * a44) -
+		(a14 * a21 * a32 * a43) -
+		(a13 * a21 * a34 * a42) +
+		(a14 * a21 * a33 * a42) +
+		(a12 * a23 * a31 * a44) -
+		(a12 * a24 * a31 * a43) -
+		(a13 * a22 * a31 * a44) +
+		(a14 * a22 * a31 * a43) +
+		(a13 * a24 * a31 * a42) -
+		(a14 * a23 * a31 * a42) -
+		(a12 * a23 * a34 * a41) +
+		(a12 * a24 * a33 * a41) +
+		(a13 * a22 * a34 * a41) -
+		(a14 * a22 * a33 * a41) -
+		(a13 * a24 * a32 * a41) +
+		(a14 * a23 * a32 * a41);
+
+	if (det != 0.0f) {
+		float b11 = a22 * a33 * a44 + a23 * a34 * a42 + a24 * a32 * a43 - a22 * a34 * a43 - a23 * a32 * a44 - a24 * a33 * a42;
+		float b12 = a12 * a34 * a43 + a13 * a32 * a44 + a14 * a33 * a42 - a12 * a33 * a44 - a13 * a34 * a42 - a14 * a32 * a43;
+		float b13 = a12 * a23 * a44 + a13 * a24 * a42 + a14 * a22 * a43 - a12 * a24 * a43 - a13 * a22 * a44 - a14 * a23 * a42;
+		float b14 = a12 * a24 * a33 + a13 * a22 * a34 + a14 * a23 * a32 - a12 * a23 * a34 - a13 * a24 * a32 - a14 * a22 * a33;
+		float b21 = a21 * a34 * a43 + a23 * a31 * a44 + a24 * a33 * a41 - a21 * a33 * a44 - a23 * a34 * a41 - a24 * a31 * a43;
+		float b22 = a11 * a33 * a44 + a13 * a34 * a41 + a14 * a31 * a43 - a11 * a34 * a43 - a13 * a31 * a44 - a14 * a33 * a41;
+		float b23 = a11 * a24 * a43 + a13 * a21 * a44 + a14 * a23 * a41 - a11 * a23 * a44 - a13 * a24 * a41 - a14 * a21 * a43;
+		float b24 = a11 * a23 * a34 + a13 * a24 * a31 + a14 * a21 * a33 - a11 * a24 * a33 - a13 * a21 * a34 - a14 * a23 * a31;
+		float b31 = a21 * a32 * a44 + a22 * a34 * a41 + a24 * a31 * a42 - a21 * a34 * a42 - a22 * a31 * a44 - a24 * a32 * a41;
+		float b32 = a11 * a34 * a42 + a12 * a31 * a44 + a14 * a32 * a41 - a11 * a32 * a44 - a12 * a34 * a41 - a14 * a31 * a42;
+		float b33 = a11 * a22 * a44 + a12 * a24 * a41 + a14 * a21 * a42 - a11 * a24 * a42 - a12 * a21 * a44 - a14 * a22 * a41;
+		float b34 = a11 * a24 * a32 + a12 * a21 * a34 + a14 * a22 * a31 - a11 * a22 * a34 - a12 * a24 * a31 - a14 * a21 * a32;
+		float b41 = a21 * a33 * a42 + a22 * a31 * a43 + a23 * a32 * a41 - a21 * a32 * a43 - a22 * a33 * a41 - a23 * a31 * a42;
+		float b42 = a11 * a32 * a43 + a12 * a33 * a41 + a13 * a31 * a42 - a11 * a33 * a42 - a12 * a31 * a43 - a13 * a32 * a41;
+		float b43 = a11 * a23 * a42 + a12 * a21 * a43 + a13 * a22 * a41 - a11 * a22 * a43 - a12 * a23 * a41 - a13 * a21 * a42;
+		float b44 = a11 * a22 * a33 + a12 * a23 * a31 + a13 * a21 * a32 - a11 * a23 * a32 - a12 * a21 * a33 - a13 * a22 * a31;
+
+		MatrixData[0] =  1/det * b11;
+		MatrixData[1] =  1/det * b12;
+		MatrixData[2] =  1/det * b13;
+		MatrixData[3] =  1/det * b14;
+		MatrixData[4] =  1/det * b21;
+		MatrixData[5] =  1/det * b22;
+		MatrixData[6] =  1/det * b23;
+		MatrixData[7] =  1/det * b24;
+		MatrixData[8] =  1/det * b31;
+		MatrixData[9] =  1/det * b32;
+		MatrixData[10] =  1/det * b33;
+		MatrixData[11] =  1/det * b34;
+		MatrixData[12] =  1/det * b41;
+		MatrixData[13] =  1/det * b42;
+		MatrixData[14] =  1/det * b43;
+		MatrixData[15] =  1/det * b44;
+	}
 }
 
 Matrix Matrix::getInverseOfMatrix()

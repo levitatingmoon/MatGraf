@@ -45,6 +45,7 @@ int main()
 	Matrix mat1(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
 	Matrix mat2(1, 5, 6, 7, 8, 4, 3, 1, 6, 9, 6, 3, 2, 1, 3, 6);
 	Matrix mat3 = mat1 * mat2;
-	cout << mat3;
-
+	cout << mat3 << endl;
+	mat3.setMatrixAsInverse(mat3);
+	cout << mat3 << endl;
 }
