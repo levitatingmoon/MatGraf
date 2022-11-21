@@ -75,6 +75,17 @@ void Vector::normalize() {
 	}
 }
 
+Vector Vector::getNormalized() {
+	float n = this->length();
+	if (n != 0) {
+		this->div(n);
+	}
+	else {
+		std::cout << "Can't divide by 0" << std::endl;
+	}
+	return *this;
+}
+
 float Vector::dotProduct(Vector v) {
 	Vector result;
 	result.x = this->x * v.x;

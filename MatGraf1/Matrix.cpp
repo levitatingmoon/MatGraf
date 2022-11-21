@@ -137,11 +137,135 @@ void Matrix::loadIdentity(void)
 
 void Matrix::setMatrixAsInverse(const Matrix& m)
 {
+
 }
 
 Matrix Matrix::getInverseOfMatrix()
 {
-	return Matrix();
+	Matrix result;
+	result.setMatrixAsInverse(*this);
+	return result;
+}
+
+void Matrix::invertMatrix()
+{
+	setMatrixAsInverse(*this);
+}
+
+void Matrix::setMatrixAsTranspose(const Matrix& m)
+{
+	/*4x4
+	* 0 4 8  12
+	* 1 5 9  13
+	* 2 6 10 14
+	* 3 7 11 15
+	* 
+	* 0 1 2 3
+	* 4 5 6 7
+	* 8 9 10 11
+	* 12 13 14 15
+	* 
+	*/
+
+	MatrixData[0] = m.MatrixData[0];
+	MatrixData[4] = m.MatrixData[1];
+	MatrixData[8] = m.MatrixData[2];
+	MatrixData[12] = m.MatrixData[3];
+
+	MatrixData[1] = m.MatrixData[4];
+	MatrixData[5] = m.MatrixData[5];
+	MatrixData[9] = m.MatrixData[6];
+	MatrixData[13] = m.MatrixData[7];
+
+	MatrixData[2] = m.MatrixData[8];
+	MatrixData[6] = m.MatrixData[9];
+	MatrixData[10] = m.MatrixData[10];
+	MatrixData[14] = m.MatrixData[11];
+
+	MatrixData[3] = m.MatrixData[12];
+	MatrixData[7] = m.MatrixData[13];
+	MatrixData[11] = m.MatrixData[14];
+	MatrixData[15] = m.MatrixData[15];
+}
+
+Matrix Matrix::getTransposeOfMatrix()
+{
+	Matrix result;
+	result.setMatrixAsTranspose(*this);
+	return result;
+}
+
+void Matrix::SetTranslationPart(const Vector & translation)
+{
+	MatrixData[12] = translation.x;
+	MatrixData[13] = translation.y;
+	MatrixData[14] = translation.z;
+}
+
+void Matrix::SetScale(const Vector& scaleFactor)
+{
+	loadIdentity();
+	MatrixData[0] = scaleFactor.x;
+	MatrixData[5] = scaleFactor.y;
+	MatrixData[10] = scaleFactor.z;
+}
+
+void Matrix::SetUniformScale(const float scaleFactor)
+{
+	loadIdentity();
+	MatrixData[0] = MatrixData[5] = MatrixData[10] = scaleFactor;
+}
+
+void Matrix::SetRotationAxis(const double angle, Vector& axis)
+{
+	Vector u = axis.getNormalized();
+
+	float sinAngle = (float)sin(M_PI * angle / 180);
+	float cosAngle = (float)cos(M_PI * angle / 180);
+	float oneMinusCosAngle = 1.0f - cosAngle;
+
+	loadIdentity();
+	MatrixData[0] = (u.x) * (u.x) + cosAngle * (1 - (u.x) * (u.x));
+	MatrixData[4] = (u.x) * (u.y) * (oneMinusCosAngle)-sinAngle * u.z;
+	MatrixData[8] = (u.x) * (u.z) * (oneMinusCosAngle)+sinAngle * u.y;
+
+	MatrixData[1] = (u.x) * (u.y) * (oneMinusCosAngle)+sinAngle * u.z;
+	MatrixData[5] = (u.y) * (u.y) + cosAngle * (1 - (u.y) * (u.y));
+	MatrixData[9] = (u.y) * (u.z) * (oneMinusCosAngle)+sinAngle * u.x;
+
+	MatrixData[2] = (u.x) * (u.z) * (oneMinusCosAngle)-sinAngle * u.y;
+	MatrixData[6] = (u.y) * (u.z) * (oneMinusCosAngle)+sinAngle * u.x;
+	MatrixData[10] = (u.z) * (u.z) + cosAngle * (1 - (u.z) * (u.z));
+}
+
+void Matrix::SetRotationX(const double angle)
+{
+	loadIdentity();
+	MatrixData[5] = (float)cos(M_PI*angle/180);
+	MatrixData[6] = (float)sin(M_PI * angle / 180);
+
+	MatrixData[9] = -MatrixData[6];
+	MatrixData[10] = MatrixData[5];
+}
+
+void Matrix::SetRotationY(const double angle)
+{
+	loadIdentity();
+	MatrixData[0] = (float)cos(M_PI * angle / 180);
+	MatrixData[2] = (float)sin(M_PI * angle / 180);
+
+	MatrixData[8] = -MatrixData[2];
+	MatrixData[10] = MatrixData[0];
+}
+
+void Matrix::SetRotationZ(const double angle)
+{
+	loadIdentity();
+	MatrixData[0] = (float)cos(M_PI * angle / 180);
+	MatrixData[1] = (float)sin(M_PI * angle / 180);
+
+	MatrixData[4] = -MatrixData[1];
+	MatrixData[5] = MatrixData[0];
 }
 
 

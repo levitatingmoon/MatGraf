@@ -18,6 +18,7 @@ public:
 	void mult(float f);
 	float length();
 	void normalize();
+	Vector getNormalized();
 	float dotProduct(Vector v);
 	Vector cross(Vector v);
 };
