@@ -56,7 +56,7 @@ int main()
 	cout << endl;
 
 	Matrix mat8 = mat1 + mat2;
-	cout << "mat1+mat2" << endl;
+	cout << "mat1 + mat2" << endl;
 	cout << mat8 << endl;
 	cout << endl;
 
@@ -71,7 +71,7 @@ int main()
 
 	Matrix mat3 = mat1 * mat2;
 
-	cout << "mat1*mat2" << endl;
+	cout << "mat1 * mat2" << endl;
 	cout << mat3 << endl;
 	cout << endl;
 
@@ -91,12 +91,29 @@ int main()
 	cout << mat9 << endl;
 	cout << endl;
 
+	//skalowanie
+	cout << "skalowanie" << endl;
+	Matrix mat12(1, 2, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	Matrix matS;
+	matS.SetScale(Vector(2,2,2));
+	cout << "mat" << endl;
+ 	cout << mat12 << endl;
+	cout << endl;
+	cout << "matScale" << endl;
+	cout << matS << endl;
+	cout << endl;
+	cout << "matScale * mat" << endl;
+	cout << matS * mat12 << endl;
+	cout << endl;
+
 	//inversja
 	Matrix mat10(-1,5,9,13,2,6,10,14,3,7,11,-15,-4,8,12,16);
 	cout << "inverse" << endl;
+	cout << "before inversion" << endl;
 	cout << mat10 << endl;
 	cout << endl;
 	mat10.setMatrixAsInverse(mat10);
+	cout << "after inversion" << endl;
 	cout << mat10 << endl;
 	cout << endl;
 
@@ -115,8 +132,10 @@ int main()
 	//transpose
 	cout << "transpose" << endl;
 	Matrix mat6(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+	cout << "before transpose" << endl;
 	cout << mat6 << endl;
 	cout << endl;
+	cout << "after transpose" << endl;
 	cout << mat6.getTransposeOfMatrix() << endl;
 
 }
