@@ -309,7 +309,7 @@ void Matrix::SetRotationAxis(const double angle, Vector& axis)
 
 	MatrixData[1] = (u.x) * (u.y) * (oneMinusCosAngle)+sinAngle * u.z;
 	MatrixData[5] = (u.y) * (u.y) + cosAngle * (1 - (u.y) * (u.y));
-	MatrixData[9] = (u.y) * (u.z) * (oneMinusCosAngle)+sinAngle * u.x;
+	MatrixData[9] = (u.y) * (u.z) * (oneMinusCosAngle)-sinAngle * u.x;
 
 	MatrixData[2] = (u.x) * (u.z) * (oneMinusCosAngle)-sinAngle * u.y;
 	MatrixData[6] = (u.y) * (u.z) * (oneMinusCosAngle)+sinAngle * u.x;
@@ -330,7 +330,7 @@ void Matrix::SetRotationY(const double angle)
 {
 	loadIdentity();
 	MatrixData[0] = (float)cos(M_PI * angle / 180);
-	MatrixData[2] = (float)sin(M_PI * angle / 180);
+	MatrixData[2] = -(float)sin(M_PI * angle / 180);
 
 	MatrixData[8] = -MatrixData[2];
 	MatrixData[10] = MatrixData[0];
