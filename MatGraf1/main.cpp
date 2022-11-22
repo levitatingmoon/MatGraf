@@ -44,8 +44,61 @@ int main()
 	------------------------------------------------------*/
 	Matrix mat1(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
 	Matrix mat2(1, 5, 6, 7, 8, 4, 3, 1, 6, 9, 6, 3, 2, 1, 3, 6);
+
+	//dodawanie
+	cout << "addition" << endl;
+	cout << mat1 << endl;
+	cout << endl;
+	cout << mat2 << endl;
+	cout << endl;
+
+	Matrix mat8 = mat1 + mat2;
+
+	cout << mat8 << endl;
+	cout << endl;
+
+	//mnozenie
+	cout << "multiplication" << endl;
+
 	Matrix mat3 = mat1 * mat2;
+
+	cout << "mat1*mat2" << endl;
 	cout << mat3 << endl;
+	cout << endl;
+
+	mat3 = mat2 * mat1;
+
+	cout << "mat2 * mat1" << endl;
+	cout << mat3 << endl;
+	cout << endl;
+
+	//inversja
+	cout << "inverse" << endl;
 	mat3.setMatrixAsInverse(mat3);
 	cout << mat3 << endl;
+	cout << endl;
+
+	//rotation
+	cout << "rotation" << endl;
+	Matrix mat4(1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	Matrix mat7(1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+	cout << "before rotation" << endl;
+	cout << mat4 << endl;
+	mat4.SetRotationY(90.0);
+	cout << "after rotation" << endl;
+	cout << mat4 << endl;
+	cout << " " << endl;
+	Matrix mat5(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+	cout << mat5 << endl;
+	Vector vec1(0, 0, 1);
+	mat5.SetRotationAxis(90,vec1);
+	cout << mat5 << endl;
+	cout << endl;
+
+	//transpose
+	cout << "transpose" << endl;
+	Matrix mat6(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+	cout << mat6 << endl;
+	cout << mat6.getTransposeOfMatrix() << endl;
+
 }
