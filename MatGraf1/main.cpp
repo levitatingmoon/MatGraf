@@ -141,13 +141,29 @@ int main()
 	*/
 Quaternions q1(1,0,3,5);
 Quaternions q2(1,1,0,2);
+cout << "quanterion 1" << endl;
+cout << "(" << q1.a << " + [" << q1.b << " ," << q1.c << " ," << q1.d << "])" << endl;
+cout << "quanterion 2" << endl;
+cout << "(" << q2.a << " + [" << q2.b << " ," << q2.c << " ," << q2.d << "])" << endl;
 
 Quaternions q3 = q1 + q2;
-cout << q3.a << q3.b << q3.c << q3.d << endl;
+cout << "dodawanie: q1 + q2" << endl;
+cout << "(" << q3.a << " + [" << q3.b << " ," << q3.c << " ," << q3.d << "])" << endl;
+cout << "odejmowanie: q1 - q2" << endl;
 q3 = q1 - q2;
-cout << q3.a << q3.b << q3.c << q3.d << endl;
+cout << "(" << q3.a << " + [" << q3.b << " ," << q3.c << " ," << q3.d << "])" << endl;
+
 
 Quaternions q4 = q1 * q2;
-cout << q4.a << q4.b << q4.c << q4.d << endl;
+cout << "mnozenie: q1 * q2" << endl;
+cout << "(" << q4.a << " + [" << q4.b << " ," << q4.c << " ," << q4.d << "])" << endl;
+
+Quaternions q5 = q2 * q1;
+cout << "mnozenie: q2 * q1" << endl;
+cout << "(" << q5.a << " + [" << q5.b << " ," << q5.c << " ," << q5.d << "])" << endl;
+
+Quaternions q6 = q1 / q2;
+cout << "dzielenie: q1 / q2" << endl;
+cout << "(" << q6.a << " + [" << q6.b << " ," << q6.c << " ," << q6.d << "])" << endl;
 
 }
