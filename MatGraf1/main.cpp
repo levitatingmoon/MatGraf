@@ -141,9 +141,9 @@ int main()
 	*/
 Quaternion q1(1,2,3,4);
 Quaternion q2(5,6,7,8);
-cout << "quanterion 1" << endl;
+cout << "quaternion 1" << endl;
 cout << q1 << endl;
-cout << "quanterion 2" << endl;
+cout << "quaternion 2" << endl;
 cout << q2 << endl;
 
 Quaternion q3 = q1 + q2;
