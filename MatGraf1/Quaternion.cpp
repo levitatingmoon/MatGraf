@@ -1,7 +1,7 @@
-#include "Quaternions.h"
+#include "Quaternion.h"
 using namespace std;
 
-Quaternions::Quaternions()
+Quaternion::Quaternion()
 {
 	a = 1;
 	b = 1;
@@ -9,7 +9,7 @@ Quaternions::Quaternions()
 	d = 1;
 }
 
-Quaternions::Quaternions(float a, float b, float c, float d)
+Quaternion::Quaternion(float a, float b, float c, float d)
 {
 	this->a = a;
 	this->b = b;
@@ -17,7 +17,7 @@ Quaternions::Quaternions(float a, float b, float c, float d)
 	this->d = d;
 }
 
-Quaternions::Quaternions(float a, Vector& v)
+Quaternion::Quaternion(float a, Vector& v)
 {
 	this->a = a;
 	this->b = v.x;
@@ -25,26 +25,26 @@ Quaternions::Quaternions(float a, Vector& v)
 	this->d = v.z;
 }
 
-Quaternions Quaternions::operator+(const Quaternions& q)
+Quaternion Quaternion::operator+(const Quaternion& q)
 {
 	float a = this->a + q.a;
 	float b = this->b + q.b;
 	float c = this->c + q.c;
 	float d = this->d + q.d;
-	return Quaternions(a, b, c, d);
+	return Quaternion(a, b, c, d);
 
 }
 
-Quaternions Quaternions::operator-(const Quaternions& q)
+Quaternion Quaternion::operator-(const Quaternion& q)
 {
 	float a = this->a - q.a;
 	float b = this->b - q.b;
 	float c = this->c - q.c;
 	float d = this->d - q.d;
-	return Quaternions(a, b, c, d);
+	return Quaternion(a, b, c, d);
 }
 
-Quaternions Quaternions::operator*(const Quaternions& q)
+Quaternion Quaternion::operator*(const Quaternion& q)
 {
 	Vector v1(this->b, this->c, this->d);
 	Vector v2(q.b, q.c, q.d);
@@ -65,10 +65,10 @@ Quaternions Quaternions::operator*(const Quaternions& q)
 	float c = t1.y;
 	float d = t1.z;
 
-	return Quaternions(a,b,c,d);
+	return Quaternion(a,b,c,d);
 }
 
-Quaternions Quaternions::operator/(const Quaternions& q)
+Quaternion Quaternion::operator/(const Quaternion& q)
 {
 	float a, b, c, d;
 
@@ -99,12 +99,12 @@ Quaternions Quaternions::operator/(const Quaternions& q)
 	c = t1.y;
 	d = t1.z;
 
-	return Quaternions(a, b,c,d);
+	return Quaternion(a, b,c,d);
 }
 
-Quaternions Quaternions::conjugate()
+Quaternion Quaternion::conjugate()
 {
-	Quaternions q;
+	Quaternion q;
 	q.a = a;
 	q.b = -b;
 	q.c = -c;
@@ -112,17 +112,21 @@ Quaternions Quaternions::conjugate()
 	return q;
 }
 
-Vector Quaternions::rotate(float alfa, Vector n, Vector point)
+Vector Quaternion::rotate(float alfa, Vector n, Vector point)
 {
-	Quaternions p(0, point.x, point.y, point.z);
+	Quaternion p(0, point.x, point.y, point.z);
 	n.mult(sin(alfa / 2));
-	Quaternions q(cos(alfa / 2), n);
-	Quaternions qc(q.conjugate());
-	Quaternions p2 = q * p;
+	Quaternion q(cos(alfa / 2), n);
+	Quaternion qc(q.conjugate());
+	Quaternion p2 = q * p;
 	p2 = p2 * qc;
 	Vector result(p2.b, p2.c, p2.d);
 	return result;
 }
 
+std::ostream& operator<<(std::ostream& strm, const Quaternion& q) {
+
+	return strm << "(" << q.a << ", [" << q.b << ", " << q.c << ", " << q.d << "])";
+}
 
 

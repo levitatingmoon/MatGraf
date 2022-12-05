@@ -2,7 +2,7 @@
 
 #include "Vector.h"
 #include "Matrix.h"
-#include "Quaternions.h"
+#include "Quaternion.h"
 #include <cmath>
 #include <math.h>
 
@@ -139,36 +139,36 @@ int main()
 	cout << "after transpose" << endl;
 	cout << mat6.getTransposeOfMatrix() << endl;
 	*/
-Quaternions q1(1,0,3,5);
-Quaternions q2(1,1,0,2);
+Quaternion q1(1,2,3,4);
+Quaternion q2(5,6,7,8);
 cout << "quanterion 1" << endl;
-cout << "(" << q1.a << " + [" << q1.b << " ," << q1.c << " ," << q1.d << "])" << endl;
+cout << q1 << endl;
 cout << "quanterion 2" << endl;
-cout << "(" << q2.a << " + [" << q2.b << " ," << q2.c << " ," << q2.d << "])" << endl;
+cout << q2 << endl;
 
-Quaternions q3 = q1 + q2;
+Quaternion q3 = q1 + q2;
 cout << "dodawanie: q1 + q2" << endl;
-cout << "(" << q3.a << " + [" << q3.b << " ," << q3.c << " ," << q3.d << "])" << endl;
+cout << q3 << endl;
 cout << "odejmowanie: q1 - q2" << endl;
 q3 = q1 - q2;
-cout << "(" << q3.a << " + [" << q3.b << " ," << q3.c << " ," << q3.d << "])" << endl;
+cout << q3 << endl;
 
 
-Quaternions q4 = q1 * q2;
+Quaternion q4 = q1 * q2;
 cout << "mnozenie: q1 * q2" << endl;
-cout << "(" << q4.a << " + [" << q4.b << " ," << q4.c << " ," << q4.d << "])" << endl;
+cout << q4 << endl;
 
-Quaternions q5 = q2 * q1;
+Quaternion q5 = q2 * q1;
 cout << "mnozenie: q2 * q1" << endl;
-cout << "(" << q5.a << " + [" << q5.b << " ," << q5.c << " ," << q5.d << "])" << endl;
+cout << q5 << endl;
 
-Quaternions q6 = q1 / q2;
+Quaternion q6 = q1 / q2;
 cout << "dzielenie: q1 / q2" << endl;
-cout << "(" << q6.a << " + [" << q6.b << " ," << q6.c << " ," << q6.d << "])" << endl;
+cout << q6 << endl;
 
 cout << "Obrot punktu [-1, -1, -1] wokol osi x (wektor normalny [1, 0, 0] o 270 stopni" << endl;
 Vector p(-1, -1, -1);
 Vector n(1, 0, 0);
-Vector v = Quaternions::rotate(270 * M_PI / 180, n, p);
+Vector v = Quaternion::rotate(270 * M_PI / 180, n, p);
 cout << v;
 }
