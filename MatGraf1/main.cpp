@@ -150,4 +150,9 @@ cout << q3.a << q3.b << q3.c << q3.d << endl;
 Quaternions q4 = q1 * q2;
 cout << q4.a << q4.b << q4.c << q4.d << endl;
 
+cout << "Obrot punktu [-1, -1, -1] wokol osi x (wektor normalny [1, 0, 0] o 270 stopni" << endl;
+Vector p(-1, -1, -1);
+Vector n(1, 0, 0);
+Vector v = Quaternions::rotate(270 * M_PI / 180, n, p);
+cout << v;
 }

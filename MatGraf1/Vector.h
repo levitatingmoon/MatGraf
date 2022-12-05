@@ -22,3 +22,5 @@ public:
 	float dotProduct(Vector v);
 	Vector cross(Vector v);
 };
+
+std::ostream& operator<<(std::ostream& strm, const Vector& v);

@@ -13,6 +13,7 @@ public:
 	Quaternions operator*(const Quaternions& q);
 	Quaternions operator/(const Quaternions& q);
 
-	void rotate();
+	Quaternions conjugate();
+	static Vector rotate(float alfa, Vector n, Vector point);
 
 };

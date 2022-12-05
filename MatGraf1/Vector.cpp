@@ -99,3 +99,8 @@ Vector Vector::cross(Vector v) {
 		this->z * v.x - this->x * v.z,
 		this->x * v.y - this->y * v.x);
 }
+
+std::ostream& operator<<(std::ostream& strm, const Vector& v) {
+
+	return strm << v.x << " " << v.y << " " << v.z;
+}

@@ -71,3 +71,28 @@ Quaternions Quaternions::operator/(const Quaternions& q)
 {
 	return Quaternions(1, 1, 1, 1);
 }
+
+Quaternions Quaternions::conjugate()
+{
+	Quaternions q;
+	q.a = a;
+	q.b = -b;
+	q.c = -c;
+	q.d = -d;
+	return q;
+}
+
+Vector Quaternions::rotate(float alfa, Vector n, Vector point)
+{
+	Quaternions p(0, point.x, point.y, point.z);
+	n.mult(sin(alfa / 2));
+	Quaternions q(cos(alfa / 2), n);
+	Quaternions qc(q.conjugate());
+	Quaternions p2 = q * p;
+	p2 = p2 * qc;
+	Vector result(p2.b, p2.c, p2.d);
+	return result;
+}
+
+
+
