@@ -147,4 +147,7 @@ cout << q3.a << q3.b << q3.c << q3.d << endl;
 q3 = q1 - q2;
 cout << q3.a << q3.b << q3.c << q3.d << endl;
 
+Quaternions q4 = q1 * q2;
+cout << q4.a << q4.b << q4.c << q4.d << endl;
+
 }
