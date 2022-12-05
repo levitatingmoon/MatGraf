@@ -13,4 +13,6 @@ public:
 	void operator*(const Quaternions& q);
 	void operator/(const Quaternions& q);
 
+	void rotate();
+
 };
