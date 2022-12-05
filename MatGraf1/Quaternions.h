@@ -8,10 +8,10 @@ public:
 	Quaternions(float a, float b, float c, float d);
 	Quaternions(float a, Vector& v);
 
-	void operator+=(const Quaternions& q);
-	void operator-=(const Quaternions& q);
-	void operator*(const Quaternions& q);
-	void operator/(const Quaternions& q);
+	Quaternions operator+(const Quaternions& q);
+	Quaternions operator-(const Quaternions& q);
+	Quaternions operator*(const Quaternions& q);
+	Quaternions operator/(const Quaternions& q);
 
 	void rotate();
 

@@ -2,6 +2,7 @@
 
 #include "Vector.h"
 #include "Matrix.h"
+#include "Quaternions.h"
 #include <cmath>
 #include <math.h>
 
@@ -42,7 +43,7 @@ int main()
 	cout << v8.x << " " << v8.y << " " << v8.z << endl;
 	cout << v8.length();
 	------------------------------------------------------*/
-
+	/*
 	Matrix mat1(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
 	Matrix mat2(1, 5, 6, 7, 8, 4, 3, 1, 6, 9, 6, 3, 2, 1, 3, 6);
 
@@ -137,5 +138,13 @@ int main()
 	cout << endl;
 	cout << "after transpose" << endl;
 	cout << mat6.getTransposeOfMatrix() << endl;
+	*/
+Quaternions q1(1,0,3,5);
+Quaternions q2(1,1,0,2);
+
+Quaternions q3 = q1 + q2;
+cout << q3.a << q3.b << q3.c << q3.d << endl;
+q3 = q1 - q2;
+cout << q3.a << q3.b << q3.c << q3.d << endl;
 
 }

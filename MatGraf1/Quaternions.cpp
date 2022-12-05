@@ -24,18 +24,31 @@ Quaternions::Quaternions(float a, Vector& v)
 	this->d = v.z;
 }
 
-void Quaternions::operator+=(const Quaternions& q)
+Quaternions Quaternions::operator+(const Quaternions& q)
 {
+	float a = this->a + q.a;
+	float b = this->b + q.b;
+	float c = this->c + q.c;
+	float d = this->d + q.d;
+	return Quaternions(a, b, c, d);
+
 }
 
-void Quaternions::operator-=(const Quaternions& q)
+Quaternions Quaternions::operator-(const Quaternions& q)
 {
+	float a = this->a - q.a;
+	float b = this->b - q.b;
+	float c = this->c - q.c;
+	float d = this->d - q.d;
+	return Quaternions(a, b, c, d);
 }
 
-void Quaternions::operator*(const Quaternions& q)
+Quaternions Quaternions::operator*(const Quaternions& q)
 {
+	return Quaternions(1,1,1,1);
 }
 
-void Quaternions::operator/(const Quaternions& q)
+Quaternions Quaternions::operator/(const Quaternions& q)
 {
+	return Quaternions(1, 1, 1, 1);
 }
