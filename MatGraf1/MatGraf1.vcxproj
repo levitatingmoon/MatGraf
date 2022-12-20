@@ -127,14 +127,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Line.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Plane.h" />
     <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="Segment.h" />
+    <ClInclude Include="Sphere.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Quaternion.cpp" />
+    <ClCompile Include="Segment.cpp" />
+    <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

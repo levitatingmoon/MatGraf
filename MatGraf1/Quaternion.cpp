@@ -83,12 +83,11 @@ Quaternion Quaternion::operator/(const Quaternion& q)
 	Vector cross = v1.cross(v2);
 
 
-	a = ((this->a * q.a) + dotv1v2) / ((q.a * q.a) + dotv2v2); //ok
+	a = ((this->a * q.a) + dotv1v2) / ((q.a * q.a) + dotv2v2);
 
 	float tmp1 = 1 / ((q.a * q.a) + dotv2v2);
 
-	t2.mult(this->a);
-	t2.mult(-1);
+	t2.mult(-this->a);
 
 	t1.mult(q.a);
 	t1 += t2;
@@ -99,7 +98,7 @@ Quaternion Quaternion::operator/(const Quaternion& q)
 	c = t1.y;
 	d = t1.z;
 
-	return Quaternion(a, b,c,d);
+	return Quaternion(a,b,c,d);
 }
 
 Quaternion Quaternion::conjugate()
