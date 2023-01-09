@@ -212,10 +212,8 @@ cout << section.IntersectionWithSection(section2) << endl;
 Sphere sphere({ 0, 0, 0 }, std::sqrt(26));
 Line line5({ 3, -1, -2 }, { 5 - 3, 3 - (-1), -4 - (-2) });
 std::vector<Vector> result = sphere.IntersectionWithLine(line5);
-int i = 1;
 for (Vector v : result) {
 	cout << v << endl;
-	i++;
 }
 
 }
