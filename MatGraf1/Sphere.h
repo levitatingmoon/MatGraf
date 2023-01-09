@@ -10,7 +10,7 @@ class Sphere {
 public:
     Sphere(const Vector& center, float radius);
 
-    std::vector<Vector> IntersectionPointWithLine(Line line);
+    std::vector<Vector> IntersectionWithLine(Line line);
 };
 
 

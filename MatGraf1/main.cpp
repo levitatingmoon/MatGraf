@@ -3,6 +3,10 @@
 #include "Vector.h"
 #include "Matrix.h"
 #include "Quaternion.h"
+#include "Line.h"
+#include "Plane.h"
+#include "Section.h"
+#include "Sphere.h"
 #include <cmath>
 #include <math.h>
 
@@ -139,6 +143,7 @@ int main()
 	cout << "after transpose" << endl;
 	cout << mat6.getTransposeOfMatrix() << endl;
 	*/
+/*
 Quaternion q1(1,2,3,4);
 Quaternion q2(5,6,7,8);
 cout << "quaternion 1" << endl;
@@ -171,4 +176,45 @@ Vector p(-1, -1, -1);
 Vector n(1, 0, 0);
 Vector v = Quaternion::rotate(270 * M_PI / 180, n, p);
 cout << v;
+*/
+
+Line line({ -2, 5, 0 }, { 3, 1, 5 });
+Line line2({ -2, 4, 0 }, { 1, -5, 3 });
+//1
+cout << line.IntersectionWithLine(line2) << endl;
+//2 ok
+cout << line.AngleLine(line2) << endl;
+
+Line line3({ -2, 2, -1 }, { 3, -1, 2 });
+Plane plane({ 2, 3, 3, -8 });
+//3 ok
+cout << line3.IntersectionWithPlane(plane) << endl;
+
+line3 = Line({ -2, 2, -1 }, { 3, -1, 2 });
+plane = Plane({ 2, 3, 3, -8 });
+//4
+cout << line3.AnglePlane(plane) << endl;
+
+Plane plane2({ 2, -1, 1, -8 });
+Plane plane3({ 4, 3, 1, 14 });
+//5 ok
+cout << plane2.IntersectionWithPlane(plane3) << endl;
+//6 ok
+cout << plane2.AnglePlane(plane3) << endl;
+
+Section section({ 5, 5, 4 }, { 10, 10, 6 });
+Section section2({ 5, 5, 5 }, { 10, 10, 3 });
+//7
+cout << section.IntersectionWithSection(section2) << endl;
+
+//8 ok
+Sphere sphere({ 0, 0, 0 }, std::sqrt(26));
+Line line4({ 3, -1, -2 }, { 5 - 3, 3 - (-1), -4 - (-2) });
+std::vector<Vector> result = sphere.IntersectionWithLine(line4);
+int i = 1;
+for (Vector v : result) {
+	cout << v << endl;
+	i++;
+}
+
 }

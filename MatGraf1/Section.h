@@ -2,11 +2,13 @@
 #include "Vector.h"
 
 class Section {
+public:
     Vector startPoint;
     Vector endPoint;
-public:
+
     Section(const Vector& startPoint, const Vector& endPoint);
 
-    Vector IntersectionPointWithSegment(Section segment);
+    Vector IntersectionWithSection(Section section);
 };
 
+std::ostream& operator<<(std::ostream& strm, const Section& section);

@@ -6,7 +6,7 @@ Sphere::Sphere(const Vector& center, float radius)
     this->radius = radius;
 }
 
-std::vector<Vector> Sphere::IntersectionPointWithLine(Line line)
+std::vector<Vector> Sphere::IntersectionWithLine(Line line)
 {
     std::vector<Vector> result;
 

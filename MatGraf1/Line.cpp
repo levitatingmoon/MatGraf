@@ -70,3 +70,9 @@ float Line::AnglePlane(Plane plane)
 
 	return M_PI / 2 - result;
 }
+
+
+std::ostream& operator<<(std::ostream& strm, const Line& line) {
+
+	return strm << line.point << " " << line.direction;
+}

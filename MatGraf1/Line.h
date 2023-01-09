@@ -2,6 +2,8 @@
 #include "Vector.h"
 #include "Plane.h"
 
+class Plane;
+
 class Line {
 public:
     Vector direction;
@@ -18,3 +20,4 @@ public:
 
 };
 
+std::ostream& operator<<(std::ostream& strm, const Line& line);

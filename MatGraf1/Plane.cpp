@@ -13,7 +13,8 @@ Plane::Plane(float a, float b, float c, float d)
     normal = vec;
 }
 
-Line Plane::IntersectionWithLine(Plane plane)
+
+Line Plane::IntersectionWithPlane(Plane plane)
 {
     Line line;
     line.direction = normal.cross(plane.normal);
@@ -30,6 +31,7 @@ Line Plane::IntersectionWithLine(Plane plane)
     return line;
 }
 
+
 float Plane::AnglePlane(Plane plane)
 {
  
@@ -42,4 +44,9 @@ float Plane::AnglePlane(Plane plane)
     float result = acos(cos) * 180 / M_PI;
 
     return result;
+}
+
+std::ostream& operator<<(std::ostream& strm, const Plane& plane) {
+
+    return strm << plane.a << " " <<plane.b << " " << plane.c << " " << plane.d;
 }

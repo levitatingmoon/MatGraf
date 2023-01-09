@@ -7,11 +7,11 @@ Section::Section(const Vector& startPoint, const Vector& endPoint)
     this->endPoint = endPoint;
 }
 
-Vector Section::IntersectionPointWithSegment(Section segment) {
-    Vector qMinusP = segment.startPoint;
+Vector Section::IntersectionWithSection(Section section) {
+    Vector qMinusP = section.startPoint;
     qMinusP -= startPoint;
-    Vector s = segment.endPoint;
-    s -= segment.startPoint;
+    Vector s = section.endPoint;
+    s -= section.startPoint;
     Vector r = endPoint;
     r -= startPoint;
 
@@ -21,3 +21,8 @@ Vector Section::IntersectionPointWithSegment(Section segment) {
 
     return result;
 }
+/*
+std::ostream& operator<<(std::ostream& strm, const Section& section) {
+    return strm << section.startPoint.x << " " << section.endPoint;
+}
+*/
