@@ -2,7 +2,7 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <math.h>
-
+using namespace std;
 Line::Line()
 {
 }
@@ -18,21 +18,20 @@ Vector Line::IntersectionWithLine(Line line)
 	Vector delta = line.point;
 	delta -= point;
 	Vector cross = direction.cross(line.direction);
-
 	if (std::abs(delta.dotProduct(cross)) > 0.001) {
 		return { 0,0,0 };
 	}
 
 	float m2 = direction.cross(line.direction).length();
 	m2 *= m2;
-
 	Vector cross1 = delta.cross(line.direction);
 	Vector cross2 = direction.cross(line.direction);
 	float s = cross1.dotProduct(cross2) / m2;
 
 	Vector result = point;
-	result += direction;
-	result.mult(s);
+	Vector multiplied = direction;
+	multiplied.mult(s);
+	result += multiplied;
 	return result;
 
 }

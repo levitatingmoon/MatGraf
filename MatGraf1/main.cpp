@@ -178,10 +178,11 @@ Vector v = Quaternion::rotate(270 * M_PI / 180, n, p);
 cout << v;
 */
 
-Line line({ -2, 5, 0 }, { 3, 1, 5 });
-Line line2({ -2, 4, 0 }, { 1, -5, 3 });
-//1
+Line line({ -2, 4, 0 }, { 3,1,5});
+Line line2({ -2, 4, 0 }, { 1, -5, 3});
+//1 ok
 cout << line.IntersectionWithLine(line2) << endl;
+
 //2 ok
 cout << line.AngleLine(line2) << endl;
 
