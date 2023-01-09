@@ -16,9 +16,8 @@ Vector Section::IntersectionWithSection(Section section) {
     r -= startPoint;
 
     Vector result = startPoint;
+    r.mult(qMinusP.cross(s).length() / r.cross(s).length());
     result += r;
-    result.mult(qMinusP.cross(s).length() / r.cross(s).length());
-
     return result;
 }
 /*

@@ -190,10 +190,10 @@ Plane plane({ 2, 3, 3, -8 });
 //3 ok
 cout << line3.IntersectionWithPlane(plane) << endl;
 
-line3 = Line({ -2, 2, -1 }, { 3, -1, 2 });
-plane = Plane({ 2, 3, 3, -8 });
-//4
-cout << line3.AnglePlane(plane) << endl;
+Line line4({ -2, 2, -1 }, { 3, -1, 2 });
+Plane plane1({ 2, 3, 3, -8 });
+//4 ok
+cout << line4.AnglePlane(plane1) << endl;
 
 Plane plane2({ 2, -1, 1, -8 });
 Plane plane3({ 4, 3, 1, 14 });
@@ -204,13 +204,13 @@ cout << plane2.AnglePlane(plane3) << endl;
 
 Section section({ 5, 5, 4 }, { 10, 10, 6 });
 Section section2({ 5, 5, 5 }, { 10, 10, 3 });
-//7
+//7 ok
 cout << section.IntersectionWithSection(section2) << endl;
 
 //8 ok
 Sphere sphere({ 0, 0, 0 }, std::sqrt(26));
-Line line4({ 3, -1, -2 }, { 5 - 3, 3 - (-1), -4 - (-2) });
-std::vector<Vector> result = sphere.IntersectionWithLine(line4);
+Line line5({ 3, -1, -2 }, { 5 - 3, 3 - (-1), -4 - (-2) });
+std::vector<Vector> result = sphere.IntersectionWithLine(line5);
 int i = 1;
 for (Vector v : result) {
 	cout << v << endl;

@@ -68,7 +68,7 @@ float Line::AnglePlane(Plane plane)
 	float cos = dotProduct / (l4 * l5);
 	float result = acos(cos) * 180 / M_PI;
 
-	return M_PI / 2 - result;
+	return 180 / 2 - result;
 }
 
 
