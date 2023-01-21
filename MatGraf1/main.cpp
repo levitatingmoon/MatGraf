@@ -9,6 +9,7 @@
 #include "Sphere.h"
 #include <cmath>
 #include <math.h>
+#include "Camera.h"
 
 using namespace std;
 
@@ -177,7 +178,7 @@ Vector n(1, 0, 0);
 Vector v = Quaternion::rotate(270 * M_PI / 180, n, p);
 cout << v;
 */
-
+/*
 Line line({ -2, 4, 0 }, { 3,1,5});
 Line line2({ -2, 4, 0 }, { 1, -5, 3});
 //1 ok
@@ -214,6 +215,9 @@ Line line5({ 3, -1, -2 }, { 5 - 3, 3 - (-1), -4 - (-2) });
 std::vector<Vector> result = sphere.IntersectionWithLine(line5);
 for (Vector v : result) {
 	cout << v << endl;
-}
+}*/
 
+Camera camera(10, 5, 7);
+camera.rotate(0, 0,M_PI);
+cout << camera.position;
 }
