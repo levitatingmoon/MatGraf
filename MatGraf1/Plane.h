@@ -8,6 +8,8 @@ class Plane {
 public:
     float a, b, c, d;
     Vector normal;
+    Plane();
+    Plane(Vector A, Vector B, Vector C, Vector D);
     Plane(float a, float b, float c, float d);
 
     Line IntersectionWithPlane(Plane plane);

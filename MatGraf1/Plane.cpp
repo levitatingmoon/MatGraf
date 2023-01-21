@@ -3,6 +3,26 @@
 #include <cmath>
 #include <math.h>
 
+Plane::Plane()
+{
+}
+
+Plane::Plane(Vector A, Vector B, Vector C, Vector D) {
+    Vector v1 = B;
+    v1 -= A;
+    Vector v2 = C;
+    v2 -= B;
+    normal = v1.cross(v2);
+    normal.mult( - 1);
+    Vector negativeNormal = normal;
+    negativeNormal.mult(-1);
+    a = normal.x;
+    b = normal.y;
+    c = normal.z;
+    d = negativeNormal.dotProduct(A);
+
+}
+
 Plane::Plane(float a, float b, float c, float d)
 {
     this->a = a;
