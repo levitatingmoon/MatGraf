@@ -10,6 +10,7 @@
 #include <cmath>
 #include <math.h>
 #include "Camera.h"
+#include "Cube.h"
 
 using namespace std;
 
@@ -219,5 +220,8 @@ for (Vector v : result) {
 
 Camera camera(10, 5, 7);
 camera.rotate(0, 0,M_PI);
-cout << camera.position;
+cout << camera.position << endl;
+
+Cube cube(2.0f);
+cout << cube.pointsInPlanes[0][3] << endl;
 }
