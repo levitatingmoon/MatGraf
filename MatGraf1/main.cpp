@@ -217,11 +217,29 @@ std::vector<Vector> result = sphere.IntersectionWithLine(line5);
 for (Vector v : result) {
 	cout << v << endl;
 }*/
+Cube cube(10);
+Camera camera;
 
-Camera camera(10, 5, 7);
-camera.rotate(0, 0,M_PI);
-cout << camera.position << endl;
+cout << camera.rayCasting(cube);
 
-Cube cube(2.0f);
-cout << cube.pointsInPlanes[0][3] << endl;
+float rotationX, rotationY, rotationZ, zoom;
+cout << "Podaj obrot wokół X stopniach: ";
+cin >> rotationX;
+cout << "Podaj obrot wokół Y stopniach: ";
+cin >> rotationY;
+cout << "Podaj obrot wokół Z stopniach: ";
+cin >> rotationZ;
+
+rotationX = M_PI * rotationX / 180;
+rotationY = M_PI * rotationY / 180;
+rotationZ = M_PI * rotationZ / 180;
+
+cout << "Podaj zoom:";
+cin >> zoom;
+
+
+camera.rotate(rotationX, rotationY, rotationZ);
+camera.zoom(zoom);
+
+cout << camera.rayCasting(cube);
 }
