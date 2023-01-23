@@ -1,10 +1,16 @@
 #include "Camera.h"
 
-Camera::Camera(float x, float y, float z)
+Camera::Camera()
 {
-	this->position.x = x;
-	this->position.y = y;
-	this->position.z = z;
+	this->position = START_POS;
+
+	for (int i = 0; i < 60; i++) {
+		for (int j = 0; j < 60; j++) {
+			viewPoints[i][j].x = (j - 30) * POINTS_WIDTH / 60;
+			viewPoints[i][j].y = START_POS.y + POINTS_CAM_DIST;
+			viewPoints[i][j].z = (i - 30) * POINTS_WIDTH / 60;
+		}
+	}
 }
 
 Vector Camera::rotatePoint(Vector point, float roll, float pitch, float yaw)
@@ -30,5 +36,46 @@ Vector Camera::rotatePoint(Vector point, float roll, float pitch, float yaw)
 void Camera::rotate(float roll, float pitch, float yaw)
 {
 	position = rotatePoint(position, roll, pitch, yaw);
-	//..obrót punktów
+
+	for (int i = 0; i < 60; i++) {
+		for (int j = 0; j < 60; j++) {
+			viewPoints[i][j] = rotatePoint(viewPoints[i][j], roll, pitch, yaw);
+		}
+	}
+}
+
+void Camera::zoom(float distance)
+{
+	Vector v(0, 0, 0);
+	v -= position;
+	float length = v.length();
+	v.div(length);
+	v.mult(distance);
+	for (int i = 0; i < 60; i++) {
+		for (int j = 0; j < 60; j++) {
+			viewPoints[i][j] += v;
+		}
+	}
+
+}
+
+std::string Camera::rayCasting(Cube cube)
+{
+	std::string result = "";
+	for (int i = 0; i < 60; i++) {
+		for (int j = 0; j < 60; j++) {
+			Vector v = viewPoints[i][j];
+			v -= position;
+			Line line(viewPoints[i][j], v);
+			if (cube.checkIntersection(line))
+			{
+				result += '0';
+			}
+			else {
+				result += '.';
+			}
+		}
+		result += "\n";
+	}
+	return result;
 }
