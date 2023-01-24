@@ -16,8 +16,8 @@ Camera::Camera()
 Vector Camera::rotatePoint(Vector point, float roll, float pitch, float yaw)
 {
 	Quaternion p(0, point);
-	float u = roll;
-	float v = pitch;
+	float u = -roll;
+	float v = -pitch;
 	float w = yaw;
 	Quaternion q;
 	q.a = cos(u / 2)*cos(v/2)*cos(w/2) + sin(u / 2)*sin(v/2)*sin(w/2);
