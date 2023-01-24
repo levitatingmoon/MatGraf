@@ -246,46 +246,39 @@ camera.zoom(zoom);
 cout << camera.rayCasting(cube);
 */
 
-Cube cube(5);
-Camera camera;
+	Cube cube(5);
+	Camera camera;
 
-float fifteen = M_PI / 12;
+	float fifteen = M_PI / 12;
 
+	float roll =0, pitch=0, yaw=0, zoom=0;
+	float rollR = 0, pitchR = 0, yawR = 0;
 
-cout << camera.rayCasting(cube);
-cout << endl << camera.info();
-for (;;)
-{
-	switch (_getch())
+	for (;;)
 	{
-	case '1':
-		camera.rotate(fifteen, 0, 0);
-		break;
-	case 'q':
-		camera.rotate(-fifteen, 0, 0);
-		break;
-	case '2':
-		camera.rotate(0, fifteen, 0);
-		break;
-	case 'w':
-		camera.rotate(0, -fifteen, 0);
-		break;
-	case '3':
-		camera.rotate(0, 0, fifteen);
-		break;
-	case 'e':
-		camera.rotate(0, 0, -fifteen);
-		break;
-	case 'z':
-		camera.zoom(1);
-		break;
-	case 'x':
-		camera.zoom(-1);
-		break;
+		system("CLS");
+		cout << camera.rayCasting(cube);
+		cout << endl << "rotX: " << roll << " rotY: " << pitch << " rotZ: " << yaw << endl;
+		cout << endl << endl;
+		cout << " |Z" << endl;
+		cout << " |   /Y" << endl;
+		cout << " |  / " << endl;
+		cout << " | / " << endl;
+		cout << " |/______ X   " << endl << endl;
+		cout << "Podaj obrot wokol X w stopniach: ";
+		cin >> roll;
+		cout << "Podaj obrot wokol Y w stopniach: ";
+		cin >> pitch;
+		cout << "Podaj obrot wokol Z w stopniach: ";
+		cin >> yaw;
+		cout << "Podaj zoom:";
+		cin >> zoom;
+
+		rollR = M_PI * roll / 180;
+		pitchR = M_PI * pitch / 180;
+		yawR = M_PI * yaw / 180;
+		camera.changeTransform(rollR, pitchR, yawR, zoom);
+	
 	}
-	system("CLS");
-	cout << camera.rayCasting(cube);
-	cout << endl << camera.info();
-}
 
 }

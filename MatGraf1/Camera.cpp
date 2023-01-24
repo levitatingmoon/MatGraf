@@ -35,7 +35,6 @@ Vector Camera::rotatePoint(Vector point, float roll, float pitch, float yaw)
 
 void Camera::rotate(float roll, float pitch, float yaw)
 {
-	rotation += Vector(roll * 180 / M_PI, pitch * 180 / M_PI, yaw * 180 / M_PI);
 	position = rotatePoint(position, roll, pitch, yaw);
 
 	for (int i = 0; i < 60; i++) {
@@ -47,7 +46,6 @@ void Camera::rotate(float roll, float pitch, float yaw)
 
 void Camera::zoom(float distance)
 {
-	currentZoom += distance;
 	Vector v(0, 0, 0);
 	v -= position;
 	float length = v.length();
@@ -82,9 +80,23 @@ std::string Camera::rayCasting(Cube cube)
 	return result;
 }
 
-std::string Camera::info()
+
+void Camera::reset()
 {
-	std::stringstream ss;
-	ss << "rotation: " << rotation << " zoom: " << currentZoom;
-	return ss.str();
+	this->position = START_POS;
+
+	for (int i = 0; i < 60; i++) {
+		for (int j = 0; j < 60; j++) {
+			viewPoints[i][j].x = (j - 30) * POINTS_WIDTH / 60;
+			viewPoints[i][j].y = START_POS.y + POINTS_CAM_DIST;
+			viewPoints[i][j].z = (i - 30) * POINTS_WIDTH / 60;
+		}
+	}
+}
+
+void Camera::changeTransform(float roll, float pitch, float yaw, float z)
+{
+	reset();
+	rotate(roll, pitch, yaw);
+	zoom(z);
 }
