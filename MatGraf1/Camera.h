@@ -2,13 +2,16 @@
 #include "Vector.h"
 #include "Quaternion.h"
 #include "Cube.h"
+#include <sstream>
 
 class Camera
 {
 	const float POINTS_CAM_DIST = 5;
 	const float POINTS_WIDTH = 10;
-	const Vector START_POS = Vector(0, -10, 0);
+	const Vector START_POS = Vector(0, -15, 0);
 public:
+	Vector rotation = Vector(0,0,0);
+	float currentZoom = 0;
 	Vector position;
 	Camera();
 	Vector rotatePoint(Vector point, float roll, float pitch, float yaw);
@@ -16,5 +19,6 @@ public:
 	void zoom(float distance);
 	Vector viewPoints[60][60];
 	std::string rayCasting(Cube cube);
+	std::string info();
 };
 
