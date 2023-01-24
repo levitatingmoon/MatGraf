@@ -1,7 +1,12 @@
 #pragma once
+
+#define _USE_MATH_DEFINES
+
 #include "Vector.h"
 #include "Quaternion.h"
 #include "Cube.h"
+#include <cstdio>
+#include <cmath>
 #include <sstream>
 
 class Camera

@@ -35,7 +35,7 @@ Vector Camera::rotatePoint(Vector point, float roll, float pitch, float yaw)
 
 void Camera::rotate(float roll, float pitch, float yaw)
 {
-	rotation += Vector(roll, pitch, yaw);
+	rotation += Vector(roll * 180 / M_PI, pitch * 180 / M_PI, yaw * 180 / M_PI);
 	position = rotatePoint(position, roll, pitch, yaw);
 
 	for (int i = 0; i < 60; i++) {

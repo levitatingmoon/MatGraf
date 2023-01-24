@@ -248,38 +248,40 @@ cout << camera.rayCasting(cube);
 
 Cube cube(5);
 Camera camera;
+
+float fifteen = M_PI / 12;
+
+
+cout << camera.rayCasting(cube);
+cout << endl << camera.info();
 for (;;)
 {
-	while (_kbhit())
+	switch (_getch())
 	{
-		char c = _getch();
-		switch (c)
-		{
-		case '1':
-			camera.rotate(5, 0, 0);
-			break;
-		case 'q':
-			camera.rotate(-5, 0, 0);
-			break;
-		case '2':
-			camera.rotate(0, 5, 0);
-			break;
-		case 'w':
-			camera.rotate(0, -5, 0);
-			break;
-		case '3':
-			camera.rotate(0, 0, 5);
-			break;
-		case 'e':
-			camera.rotate(0, 0, -5);
-			break;
-		case 'z':
-			camera.zoom(1);
-			break;
-		case 'x':
-			camera.zoom(-1);
-			break;
-		}
+	case '1':
+		camera.rotate(fifteen, 0, 0);
+		break;
+	case 'q':
+		camera.rotate(-fifteen, 0, 0);
+		break;
+	case '2':
+		camera.rotate(0, fifteen, 0);
+		break;
+	case 'w':
+		camera.rotate(0, -fifteen, 0);
+		break;
+	case '3':
+		camera.rotate(0, 0, fifteen);
+		break;
+	case 'e':
+		camera.rotate(0, 0, -fifteen);
+		break;
+	case 'z':
+		camera.zoom(1);
+		break;
+	case 'x':
+		camera.zoom(-1);
+		break;
 	}
 	system("CLS");
 	cout << camera.rayCasting(cube);
